@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Practica_2_SD</title>
+        <style>
+            .seccion{display: none;}
+            .activa{display: block;}
+        </style>
+    </head>
+
+    <body>
+        <h1>Mi aplicación - Médico</h1>
+
+
+        <!-- *************** SECCION LOGIN  *************************** -->
+        <div id="login1" class="seccion activa">
+            <h2>Login</h2>
+            <div>Login: <input id="login" /></div> 
+            <div>Password: <input id="password" /></div> <!-- type="password" para que no se vea la contraseña, se vean puntitos-->
+            <button onclick="login_Medico()">Entrar</button> 
+        </div>
+
+
+        <!-- *************** SECCION menu-principal  ***************** -->
+        <div id="menu-principal" class="seccion">
+            <h2>Menu principal</h2>
+
+            <h3 id="bienvenido"> Medico: </h3>
+
+            <p id="mensaje_del_paciente"></p>
+            
+
+            <button onclick="datos_Paciente_Nuevo()">Nuevo Paciente</button>
+            <button onclick="listado_Medicamentos()">Listado medicamentos</button>
+            <button onclick="salir()"> Salir </button>
+
+            <div>
+                <fieldset>
+                    <legend>Pacientes asignados:</legend>
+                    <dl id = "listado-Paciente"></dl>
+                </fieldset>
+            </div>
+
+
+        </div>
+
+
+        <!--  **************** Sección datos-paciente-nuevo  ---- > FORMULARIO NUEVO PACIENTE *******************-->
+        <div id="datos-paciente-nuevo" class="seccion">
+
+            <h2>Formulario Nuevo Paciente</h2>
+            <div class="formulario_Crear_Paciente">
+                <form id="formulario_Paciente">
+        
+                    <label for="nombre_Paciente">Nombre:</label><br/>
+                        <input
+                        type="text"
+                        id="nombre_Paciente"
+                        name="nombre_Paciente"
+                        placeholder="Héctor"
+                        /><br/>
+                    <label for="apellidos_Paciente">Apellidos:</label><br/>
+                        <input
+                        type="text"
+                        id="apellidos_Paciente"
+                        name="apellidos_Paciente"
+                        placeholder="Llorens Fernández"
+                        /><br/>
+                    <label for="fecha_Nacimiento_Paciente">Fecha Nacimiento:</label><br/>
+                        <input
+                        type="datetime-local"
+                        id="fecha_Nacimiento_Paciente"
+                        name="fecha_Nacimiento_Paciente"
+                        placeholder="2000-01-01"
+                        /><br/>
+                    <label for="genero_Paciente">Genero(H/M):</label><br/>
+                        <input
+                        type="text"
+                        id="genero_Paciente"
+                        name="genero_Paciente" 
+                        placeholder="H"
+                        /><br/> 
+                    <label for="codigo_Acceso_Paciente">Código Acceso:</label><br/>
+                        <input
+                        type="text"
+                        id="codigo_Acceso_Paciente"
+                        name="codigo_Acceso_Paciente"
+                        placeholder="02A1"
+                        /><br/>    
+                    <label for="observaciones_Paciente">Observaciones:</label><br/>
+                        <textarea
+                        type="text"
+                        id="observaciones_Paciente"
+                        name="observaciones_Paciente"
+                        rows="3" cols="30">Escribe aquí tu comentario...
+                        </textarea><br/> 
+                </form>
+                
+                <p id="creando_Paciente"></p> <!-- Se crea el botón CREAR PACIENTE Dinamicamente -->
+                <button onclick="menu_principal()">Volver al Menu Principal</button>
+                <button onclick="salir()"> Salir </button>
+
+                <!-- Volvemos a poner esto en la sección crear paciente para que nos salga la lista de los pacientes cuando se creen-->
+               
+            </div>
+            <!-- ************ LISTADO PACIENTES ASIGNADOS ************* -->
+            <div>
+                <fieldset>
+                    <legend>Pacientes asignados:</legend>
+                    <dl id = "listado-Paciente-nuevo"></dl>
+                </fieldset>  
+            </div>
+        </div>
+
+
+ <!--  **************** SECCION datos-paciente ---- > VEMOS LOS DATOS DEL PACIENTE ************************ -->
+
+        <div id="datos-paciente" class="seccion">
+            <h2>Datos del Paciente a Editar:</h2>
+            <div>
+                <fieldset>
+                    <legend>Paciente a Editar:</legend>
+                    <dl id = "paciente-Editado"></dl>
+                </fieldset>  
+            </div>
+            <h2>Editar Datos Paciente</h2>
+
+<!--  ************* Formulario para EDITAR DATOS PACIENTE *************** -->
+            <div class="Datos_Paciente_Editado">
+                <form id ="formulario_Paciente_Editado">
+                    <label for="nombre_Paciente_Editado">Nombre:</label><br/>
+                        <input
+                        type="text"
+                        id="nombre_Paciente_Editado"
+                        name="nombre_Paciente_Editado"
+                        placeholder="Héctor"
+                        /><br/>
+                    <label for="apellidos_Paciente_Editado">Apellidos:</label><br/>
+                        <input
+                        type="text"
+                        id="apellidos_Paciente_Editado"
+                        name="apellidos_Paciente_Editado"
+                        placeholder="Llorens Fernández"
+                        /><br/>
+                    <label for="fecha_Nacimiento_Paciente_Editado">Fecha Nacimiento:</label><br/>
+                        <input
+                        type="datetime-local"
+                        id="fecha_Nacimiento_Paciente_Editado"
+                        name="fecha_Nacimiento_Paciente_Editado"
+                        placeholder="2000-01-01"
+                        /><br/>
+                    <label for="genero_Paciente_Editado">Genero(H/M):</label><br/>
+                        <input
+                        type="text"
+                        id="genero_Paciente_Editado"
+                        name="genero_Paciente_Editado" 
+                        placeholder="H"
+                        /><br/> 
+                    <label for ="medico_Paciente_Editado">Médico:</label><br/>
+                        <select id="medico_Paciente_Editado" name="medico_Paciente_Editado">
+                            <option id= "1" value="1">Pauli</option>
+                            <option id= "2" value="2">Ende</option>
+                            <option id= "3" value="3">Hector</option>
+                            <option id= "4" value="4">Katy</option>
+                            <option id= "5" value="5">Pedro</option>
+                        </select>
+                        <br/>
+                    <label for="codigo_Acceso_Paciente_Editado">Código Acceso:</label><br/>
+                        <input
+                        type="text"
+                        id="codigo_Acceso_Paciente_Editado"
+                        name="codigo_Acceso_Paciente_Editado"
+                        placeholder="02A1"
+                        /><br/>    
+                    <label for="observaciones_Paciente_Editado">Observaciones:</label><br/>
+                        <textarea
+                        type="text"
+                        id="observaciones_Paciente_Editado"
+                        name="observaciones_Paciente_Editado"
+                        rows="3" cols="30">Escribe aquí tu comentario...
+                        </textarea><br/> 
+                </form>
+                <button onclick="actualizar_Paciente()"> Actualizar Datos Paciente</button> 
+                </br>
+                </br>
+            </div>
+            
+            
+            <button onclick="listado_Medicamentos()">Listado medicamentos</button> 
+            <button onclick="menu_principal()">Volver al Menu Principal</button>
+            <button onclick="salir()"> Salir </button>
+        </div>
+
+        <!-- <div id="datos-usuarios" class="seccion">
+            <h2>Datos del usuario</h2> -->
+            <!-- Cambia a la sección que se indica en el interior-->
+            <!-- <button onclick="cambiarSeccion('menu-principal')"> Menu Principal </button> 
+            <button onclick="salir()"> Salir </button>
+        </div>
+        -->
+
+        <div id="medicamentos-paciente" class="seccion">
+            <h2>Medicamentos:</h2>
+            <p id = paciente-medicamento>  </p> <!-- texto introducido en la función listado_Medicamento() 'Medicamentos del paciente: + nombre_Paciente'-->
+            
+            <dl id = "listado-Paciente-Medicamento"></dl>
+
+            <button onclick ="menu_principal()">Volver al Menu Principal</button>
+            <button onclick="salir()"> Salir </button>
+        </div> 
+
+        <div id="pagina-Tomas" class="seccion">
+            <h2 id ="tomas-Paciente">Tomas del Paciente</h2>
+            
+            <dl id ="listado-Tomas"></dl>
+            <button onclick ="menu_principal()">Volver al Menu Principal</button>
+            <button onclick="salir()"> Salir </button>
+        </div> 
+
+        <div id="datos-medicamentos" class="seccion">
+            <h2>Listado de los Medicamentos Disponibles:</h2>
+            
+            <dl id = "listado-Medicamentos"></dl>
+
+            <button onclick ="menu_principal()">Volver al Menu Principal</button>
+            <button onclick="salir()"> Salir </button>
+        </div> 
+
+        <div id="pagina-info-Paciente"class="seccion">
+            <h2> Información:</h2>
+            
+            <dl id = "info-Paciente"></dl>
+
+            <button onclick ="menu_principal()">Volver al Menu Principal</button>
+            <button onclick="salir()"> Salir </button>
+        </div> 
+
+        <div id="pagina-nueva-Medicacion"class="seccion">
+            <h2> Añadir Medicación:</h2>
+            <from id ="formulario-nueva-medicacion">
+                <label for ="medicamento-paciente">Medicamento:</label><br/>
+                <select id="medicamento-paciente" name="medicamento-paciente" multiple>
+                    <!-- <option value="" selected>Escoge Medicamento:</option> -->
+                    <option id="Ibuprofeno" value="Ibuprofeno">Ibuprofeno</option>
+                    <option id="Ibuprofeno +" value="Ibuprofeno +">Ibuprofeno +</option>
+                    <option id="Paracetamol" value="Paracetamol">Paracetamol</option>
+                    <option id="Morfina ++" value="Morfina ++">Morfina ++</option>
+                    <option id="Pastilla azul" value="Pastilla azul">Pastilla azul</option>
+                </select>
+                <br/>
+                <br/>
+                <br/>
+                <label for="dosis-paciente">Number de dosis:</label>
+                <input type="number" id="dosis-paciente" name="dosis-paciente"  min="1" max="10">
+                <br/>
+                <br/>
+                <label for="tomas-paciente">Number de tomas (0=Crónico):</label>
+                <input type="number" id="tomas-paciente" name="tomas-paciente" min="0" max="10">
+                <br/>
+                <br/>
+                <!-- <label for="frecuencia-paciente">Frecuencia (0, 0.25, 0.5, 1, 2):</label>
+                    <input type="number" id="frecuencia-paciente" name="frecuencia-paciente" min="0" max="2">
+                    <br/> -->frecuencia-paciente
+                    <label for ="frecuencia-paciente">Frecuencia Medicamento:</label><br/>
+                    <select id="frecuencia-paciente" name="frecuencia-paciente" multiple>
+                        <!-- <option value="" selected>Escoge Frecuencia:</option> -->
+                        <option id="frecuencia_0" value="frecuencia_0" selected>0</option>
+                        <option id="frecuencia_025" value="frecuencia_025">0.25</option>
+                        <option id="frecuencia_05" value="frecuencia_05">0.50</option>
+                        <option id="frecuencia_1" value="frecuencia_1">1</option>
+                        <option id="frecuencia_2" value="frecuencia_2">2</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label for="observaciones_medicacion">Observaciones:</label><br/>
+                    <textarea
+                    type="text"
+                    id="observaciones_medicacion"
+                    name="observaciones_medicacion"
+                    rows="3" cols="30">Escribe aquí tu comentario...
+                </textarea>
+                <br/> 
+                <br/>
+            </from>
+                
+                <!-- PONER UN BOTON PARA QUE AÑADA LA FUNCIÓN AÑADIR MEDICACIÓN -->
+                <!-- <button id ="boton_anyadir_medicacion" onclick="anyadir_Medicacion(id_Paciente)">Añadir Medicación</button> -->
+            <p id ="boton_anyadir_medicacion"></p>
+            <br/>
+            <br/>
+            <button onclick ="menu_principal()">Volver al Menu Principal</button>
+            <button onclick="salir()"> Salir </button>
+        </div> 
+        
+
+
+        <script src="rest.js"></script>
+        <script src="main.js"></script>
+    </body>
+
+</html>
