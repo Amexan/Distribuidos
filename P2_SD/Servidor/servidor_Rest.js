@@ -1,4 +1,4 @@
-// Este es un mensaje para héctor, este archivo está modificado
+// Este es un mensaje para Sun, este archivo está modificado
 
 // CÓDIGOS DE RESPUESTA REST
 // 200 OK (GET, PUT, DELETE)
