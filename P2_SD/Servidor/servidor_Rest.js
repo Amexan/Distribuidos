@@ -1,4 +1,10 @@
-// se sube
+// en la aplicacion medico realizar una modificacion que permita a un medico hacer una recomendacion automática a todas las medicaciones de sus pacientes
+// crear un botón "Recomendacion" junto ocn un INPUT de textp en la vista principal del médico que al pulsarlo llamará a un nuevo servicio web --> POST /api/medico/:idMedico/recomendacion
+//El cuerpo body de la petición se mandará un objeto con un único campo "texto" donde aparecerá el texto del input
+// el Servicio para todas las medicaciones de todos los pacientes del médico indicado en el idMedico, añadirá a las observaciones de la medicacion
+// el texto pasado en el body
+// El servicio retorna el número total de observaciones modificadas
+// tras pulsar el botón mostrar alert con las observaciones realizadas: Ejempllo: se ha realizadola recomendacion en 5 medicaciones
 // CÓDIGOS DE RESPUESTA REST
 // 200 OK (GET, PUT, DELETE)
 // 201 CREATED (PUT, POST)
