@@ -1,3 +1,4 @@
+// puuppu
 // Enlazamos el servidor_rpc.js con el archivo rpc.js de la esta misma carpeta Servidor.
 var rpc = require("./rpc.js");
 // Enlazamos con archivo datos.js para poder importar los arrays y contadores. En datos.js deben exportarse las variables para poder usarlas aquí.
