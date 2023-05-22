@@ -1,4 +1,4 @@
-// Este es un mensaje para Sun, este archivo está modificado
+// prueba ejemplo 2, este archivo está modificado
 
 // CÓDIGOS DE RESPUESTA REST
 // 200 OK (GET, PUT, DELETE)
