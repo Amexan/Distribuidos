@@ -1,0 +1,88 @@
+<!-- Del html va al main y del main va al servidor que es donde lo comprueba -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <title>RestApi RPC</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <!-- <link href="paciente.css" rel="stylesheet" type="text/css" /> -->
+    <style>
+      .seccion {
+        display: none;
+      }
+      .activa {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Mi aplicación - Paciente</h1>
+
+    <!-- *************** SECCION LOGIN  *************************** -->
+    <div id="loginPac" class="seccion activa">
+        <h2>Login</h2>
+        <div>Código de acceso: <input type="password" id="codigo-Acceso" /></div>
+      <button onclick="login_Paciente()">Entrar</button>
+    </div>
+
+    <!-- Menú principal del médico donde verá sus listados de pacientes -->
+    <div id="menu-Principal-Paciente" class="seccion">
+      <h2>Menú principal del Paciente</h2>
+
+        <p id="mensaje-bienvenida"></p>
+      
+        <button onclick="datosDelMedico()">Ver datos de tu médico</button>
+        <p id="mensaje_del_medico"></p>
+        <p id ="nombre-Paciente-Medicamentos"></p> <!--Puesto dinámicamento en el main: verListaMedicion() -->
+        
+        <div id="listado-medicamentos-paciente"></div>
+        
+        <ul id="listado-Medicacion"> </ul>
+        <input id="fecha_cita" type=datetime-local></input>
+        <p><button onclick="pedirCita()">Pedir cita al médico</button>
+
+        <p><button onclick="salir()">Salir</button></p>
+    </div>
+
+
+    <div id="menu-datos-medico" class="seccion">
+      <h2>Datos del Médico</h2>
+        <p id ="datos-medico"></p> <!-- Puesto dinámicamento en el main: datosMedico() -->
+        
+      <button onclick="menu_Principal_Paciente()">Volver al Menu Principal</button>  
+      <button onclick="salir()">Salir</button>
+    </div> 
+
+
+
+    <div id="menu-medicacion-paciente" class="seccion">
+      <h2>Medicación del Paciente</h2>
+        <ul id="lista-medicacion-paciente"> </ul>
+        
+      <button onclick="menu_Principal_Paciente()">Volver al Menu Principal</button>  
+      <button onclick="salir()">Salir</button>
+    </div>
+
+    
+
+
+    <div id="menu-tomas-paciente" class="seccion">
+      <h2>Tomas del Paciente</h2>
+        <p id="tomas-paciente"> </p>
+
+        <!-- <p id="nueva-toma"> </p> Botón donde va a ir la función para añadir la nueva toma -->
+        
+      <button onclick="menu_Principal_Paciente()">Volver al Menu Principal</button>  
+      <button onclick="salir()">Salir</button>
+    </div>
+
+
+    
+
+    <!-- Conectamos los archivos .js con el index.html -->
+    <script src="rest.js"></script>
+    <script src="rpc.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
