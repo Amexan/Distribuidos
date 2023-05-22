@@ -72,7 +72,17 @@ function pagina_Nueva_Medicacion(){
 }
 
 
-
+function enviarRecomendacion(){
+    var texto = document.getElementById('textorecomendacion').value;
+    console.log(id_Medico);
+    
+    var textoCuerpo = {
+        texto: texto
+    }
+    rest.post("/api/medico/"+ id_Medico +"/recomendacion", textoCuerpo ,function(estado,respuesta){
+        alert("se ha realizadola recomendacion en "+ respuesta + " medicaciones")
+    })
+}
 // rest.get(url, callback)
 // rest.post(url, body, callback)
 // rest.put(url, body, callback)

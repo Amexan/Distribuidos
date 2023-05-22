@@ -55,6 +55,34 @@ app.use(express.json());
 
 // Empieza aquí
 
+app.post("/api/medico/:idMedico/recomendacion", function(req,res){
+    var idMedico = req.params.idMedico
+    var texto = { //body_Medico
+        texto: req.body.texto // Cogemos el password del id="password" del body del html
+   };
+
+   var contador = 0
+   for(var i in lista_Paciente){
+    if(lista_Paciente[i].medico == idMedico){
+        // console.log("Correcto");
+        for(var j in lista_Medicacion){
+            if(lista_Paciente[i].id == lista_Medicacion[j].paciente){
+                lista_Medicacion[i].observaciones = "Observaciones del médico"
+                contador++;
+            }
+        }
+    }
+   }
+    // console.log(idMedico);
+
+//    for(var i in lista_Paciente){
+//     if(lista_Paciente[i].medico == idMedico){
+//         console.log("Entra");
+//     }
+//    }
+
+   return res.status(201).json(contador)
+})
 
 
 // *****************   Funciones GET  *****************
